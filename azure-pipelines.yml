@@ -6,7 +6,8 @@ jobs:
 - job:  ContainerImageScan
   pool:
     vmImage: 'ubuntu-latest'
-steps:
+
+  steps:
   - task: DockerInstaller@0
     inputs:
       dockerVersion: '17.09.0-ce'
@@ -28,10 +29,12 @@ steps:
         docker save -o web-dvwa.tar vulnerables/web-dvwa
         ./shiftleft image-scan -i ./web-dvwa.tar
     displayName: Running Container Image scan
- job: TerraformScan
+
+- job: TerraformScan
   pool:
     vmImage: 'ubuntu-latest'
-   steps:
+  
+  steps:
   - task: CmdLine@2
     inputs:
       script: |
@@ -48,9 +51,11 @@ steps:
         git clone https://github.com/chkp-rolandop/cloudguard-iac-noncompliant-terraform/
         ./shiftleft iac-assessment -p ./cloudguard-iac-noncompliant-terraform/aws/ -r -64
     displayName: Running Terraform Assessment
- job: SourceCodeScanning
+
+- job: SourceCodeScanning
   pool:
     vmImage: 'ubuntu-latest'
+  
   steps:
   - task: CmdLine@2
     inputs:
@@ -68,7 +73,8 @@ steps:
         git clone https://github.com/chkp-rolandop/demo-app
         ./shiftleft code-scan -t 900 -s ./demo-app
     displayName: Running Source Code scan
- job: SourceCodeScanningOnWindows
+
+- job: SourceCodeScanningOnWindows
   pool:
     vmImage: 'windows-latest'
   steps:
