@@ -21,8 +21,8 @@ jobs:
   - task: CmdLine@2
     env:
       #Need to map secret variable to environment variables
-      SG_CLIENT_ID: $(SG_CLIENT_ID)
-      SG_SECRET_KEY: $(SG_SECRET_KEY)
+      SG_CLIENT_ID:$(SG_CLIENT_ID)
+      SG_SECRET_KEY:$(SG_SECRET_KEY)
     inputs:
       script: |
         docker pull vulnerables/web-dvwa
