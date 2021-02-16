@@ -23,8 +23,8 @@ jobs:
       #Need to map secret variable to environment variables
       SG_CLIENT_ID:
       SG_SECRET_KEY:
-      CHKP_CLOUDGUARD_ID= $(CHKP_CLOUDGUARD_ID)
-      CHKP_CLOUDGUARD_SECRET= $(CHKP_CLOUDGUARD_SECRET)
+      CHKP_CLOUDGUARD_ID: $(CHKP_CLOUDGUARD_ID)
+      CHKP_CLOUDGUARD_SECRET: $(CHKP_CLOUDGUARD_SECRET)
     inputs:
       script: |
         docker pull vulnerables/web-dvwa
