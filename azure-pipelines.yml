@@ -73,3 +73,19 @@ jobs:
         git clone https://github.com/chkp-rolandop/demo-app
         ./shiftleft code-scan -t 900 -s ./demo-app
     displayName: Running Source Code scan 
+
+- job: SourceCodeScanningOnWindows
+  pool:
+    vmImage: 'windows-latest'
+  steps:
+  - task: CmdLine@2
+    env:
+      #Map secret variables to environment variables
+      CHKP_CLOUDGUARD_ID: $(CHKP_CLOUDGUARD_ID)
+      CHKP_CLOUDGUARD_SECRET: $(CHKP_CLOUDGUARD_SECRET)
+    inputs:
+      script: |
+        git clone https://github.com/cr0hn/vulnerable-node
+        curl -G https://shiftleft-prod.s3.amazonaws.com/blades/shiftleft/bin/windows/amd64/0.0.24/shiftleft.exe -o shiftleft.exe
+        shiftleft.exe code-scan -s ./vulnerable-node
+    displayName: Running Source Code scan
