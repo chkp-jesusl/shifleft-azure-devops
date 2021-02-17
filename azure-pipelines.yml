@@ -28,7 +28,6 @@ jobs:
         docker save -o web-dvwa.tar vulnerables/web-dvwa
         ./shiftleft image-scan -i ./web-dvwa.tar
     displayName: Running Container Image scan 
-
 - job: TerraformScan
   pool:
     vmImage: 'ubuntu-latest'
@@ -50,7 +49,6 @@ jobs:
         git clone https://github.com/chkp-rolandop/cloudguard-iac-noncompliant-terraform/
         ./shiftleft iac-assessment -p ./cloudguard-iac-noncompliant-terraform/aws/ -r -64
     displayName: Running Terraform Assessment 
-
 - job: SourceCodeScanning
   pool:
     vmImage: 'ubuntu-latest'
@@ -72,7 +70,6 @@ jobs:
         git clone https://github.com/chkp-rolandop/demo-app
         ./shiftleft code-scan -t 900 -s ./demo-app
     displayName: Running Source Code scan 
-
 - job: SourceCodeScanningOnWindows
   pool:
     vmImage: 'windows-latest'
