@@ -6,7 +6,6 @@ jobs:
 - job:  ContainerImageScan
   pool:
     vmImage: 'ubuntu-latest'
-
   steps:
   - task: DockerInstaller@0
     inputs:
