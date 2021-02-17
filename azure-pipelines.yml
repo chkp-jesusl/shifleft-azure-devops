@@ -17,7 +17,8 @@ jobs:
       script: |
         curl -G https://shiftleft-prod.s3.amazonaws.com/blades/shiftleft/bin/linux/amd64/0.0.29/shiftleft -o shiftleft
         chmod +x shiftleft
-    displayName: Install ShiftLeft          
+    displayName: Install ShiftLeft
+exit
   - task: CmdLine@2
     env:
       #Need to map secret variable to environment variables
