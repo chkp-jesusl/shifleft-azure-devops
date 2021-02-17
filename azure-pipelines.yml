@@ -6,3 +6,15 @@ jobs:
 - job:  ContainerImageScan
   pool:
     vmImage: 'ubuntu-latest'
+
+steps:
+  - task: DockerInstaller@0
+    inputs:
+      dockerVersion: '17.09.0-ce'
+    displayName: Installing Docker
+  - task: CmdLine@2
+    inputs:
+      script: |
+        curl -G https://shiftleft-prod.s3.amazonaws.com/blades/shiftleft/bin/linux/amd64/0.0.29/shiftleft -o shiftleft
+        chmod +x shiftleft
+    displayName: Install ShiftLeft
